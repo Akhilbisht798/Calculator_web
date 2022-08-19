@@ -25,6 +25,16 @@
     height: 140px;
 }
 
+.preLog {
+    border: 2px solid brown;
+    height: 70px;
+}
+
+.answerScreen {
+    border: 2px solid violet;
+    height: 70px;
+}
+
 .keys {
     border: 2px solid black;
 }

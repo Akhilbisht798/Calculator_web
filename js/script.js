@@ -1,4 +1,6 @@
 let keys = document.querySelectorAll('.keys');
+let answerScreen = document.querySelector('.answerScreen');
+let Log = document.querySelector('.Log');
 let string = "";
 let num1;
 let num2;
@@ -45,28 +47,53 @@ function operate(operator, a, b) {
     return ans;
 }
 
+// This will restart again if and only if User press ac
+// otherwise the answer of previous 2 will be next num1.
 keys.forEach(key => {
     key.addEventListener('click' , (e) => {
-        if(key.innerHTML === "+" || key.innerHTML === " - " || key.innerHTML === "*" || key.innerHTML === "/") {
+        if(key.innerHTML === "+" || key.innerHTML === " - " || key.innerHTML === "*" || key.innerHTML === "/" || key.innerHTML === " = ") {
+
+            //if we have both operand and operator than it is ready to operate.
             if (isReadytoOperate) {
-                num2 = Number(string); //second number.
-                let ans = operate(operator, num1, num2);
-                console.log(ans);
-                isReadytoOperate = false;
-                operator = key.innerHTML;
-                console.log(operator);
+                if(operator === "") {
+                    operator = key.innerHTML;
+                    // console.log(operator);
+                }
+                else {
+                    num2 = Number(string); //second number.
+                    // we have all thing for a succesfull calculation.
+                    let ans = operate(operator, num1, num2);
+                    // console.log(ans);
+                    answerScreen.innerHTML = ans; 
+                    num1 = ans;
+                }
+                //if user press equal to button.
+                if (key.innerHTML === " = ") {
+                    operator = "";
+                }
+                else {
+                    operator = key.innerHTML;
+                }
+                // console.log(operator);
+                //Untill user press ac we can use our ans as num1.
                 string = "";
             }
+            //else not.
             else {
-                isReadytoOperate = true;
                 num1 = Number(string); // getting first Number.
-                operator = key.innerHTML;
+                operator = key.innerHTML; //getting the operator.
+                isReadytoOperate = true; // we only lack 2 operand.
                 string = "";
             }
         }
         else {
             string += key.innerHTML;
             console.log(string);
+            Log.innerHTML = string;
+        }
+        if(num1 !== null && num2 !== null) {
+            console.log("num1 is = "+num1);
+            console.log("num2 is = "+num2);
         }
     })
 })
