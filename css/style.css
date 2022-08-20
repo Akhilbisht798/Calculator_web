@@ -3,13 +3,70 @@
     padding: 0px;
 }
 
-.main {
+/* ------------------------------------------------------------- */
+/* Calculator UI section */
+
+#mainSection {
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------------------------------------------------------- */
+/* Outer display of calculator */
+
+.main {
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid red;
+    height: 600px;
+    width: 400px;
+    background-color: #36454f;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+
+/* ------------------------------------------------------------- */
+/* Screen of the calculator */
+
+.screen {
+    border: 2px solid yellow;
+    width: 350px;
+    height: 140px;
+    background-color: #66ff66;
+}
+
+.Log {
+    height: 60px;
+}
+
+.operatorDisplay {
+    width: 350px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.answerScreen {
+    height: 70px;
+}
+
+/* --------------------------------------------------------- */
+/* Clear and Delete keys */
+
+.twoKeys {
+    width: 350px;
+    height: 37px;
+    padding: 4px;
+}
+
+.btns2 {
+    padding: 3px;
+}
+
+/* ----------------------------------------------------------- */
+/* all other button  */
 
 .calKeys {
     display: inline-grid;
@@ -17,24 +74,4 @@
     width: 350px;
     height: 300px;
     border: 2px solid blue;
-}
-
-.screen {
-    border: 2px solid yellow;
-    width: 350px;
-    height: 140px;
-}
-
-.preLog {
-    border: 2px solid brown;
-    height: 70px;
-}
-
-.answerScreen {
-    border: 2px solid violet;
-    height: 70px;
-}
-
-.keys {
-    border: 2px solid black;
 }
