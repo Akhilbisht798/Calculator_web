@@ -1,6 +1,7 @@
 let keys = document.querySelectorAll('.keys');
 let answerScreen = document.querySelector('.answerScreen');
 let Log = document.querySelector('.Log');
+let opi = document.querySelector('.opi');
 let string = "";
 let num1;
 let num2;
@@ -57,16 +58,16 @@ keys.forEach(key => {
             if (isReadytoOperate) {
                 if(operator === "") {
                     operator = key.innerHTML;
-                    // console.log(operator);
+                    opi.innerHTML = operator;
                 }
                 else {
-                    num2 = Number(string); //second number.
-                    // we have all thing for a succesfull calculation.
+                    num2 = Number(string);
                     let ans = operate(operator, num1, num2);
-                    // console.log(ans);
                     answerScreen.innerHTML = ans; 
                     num1 = ans;
+                    //ans will became num1 for next calculation untill User press clear button.
                 }
+
                 //if user press equal to button.
                 if (key.innerHTML === " = ") {
                     operator = "";
@@ -74,15 +75,16 @@ keys.forEach(key => {
                 else {
                     operator = key.innerHTML;
                 }
-                // console.log(operator);
-                //Untill user press ac we can use our ans as num1.
+                opi.innerHTML = operator;
                 string = "";
             }
-            //else not.
+
+            //Only Execute for the first time to get the first num1.
             else {
-                num1 = Number(string); // getting first Number.
+                num1 = Number(string);
                 operator = key.innerHTML; //getting the operator.
-                isReadytoOperate = true; // we only lack 2 operand.
+                isReadytoOperate = true; // Done because to only enter if block of the statement.
+                opi.innerHTML = operator;
                 string = "";
             }
         }
@@ -90,10 +92,6 @@ keys.forEach(key => {
             string += key.innerHTML;
             console.log(string);
             Log.innerHTML = string;
-        }
-        if(num1 !== null && num2 !== null) {
-            console.log("num1 is = "+num1);
-            console.log("num2 is = "+num2);
         }
     })
 })
